@@ -3,6 +3,7 @@ const addBtn = document.getElementById('addBtn');
 const readBtn = document.querySelector('.readBtn');
 const removeBtn = document.querySelector('.removeBtn');
 const card = document.querySelector('.card');
+const submitBtn = document.getElementById('submitBtn');
 
 const myLibrary = [];
 
@@ -14,9 +15,17 @@ function Book(title, author, pages, isRead=false){
 }
 
 function addBookToLibrary(){
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const isRead = document.getElementById('isRead').value;
+
     let book = new Book(title, author, pages, isRead);
     myLibrary.push(book);
+    console.log(myLibrary[0]);
 }
+
+submitBtn.addEventListener('click', addBookToLibrary);
 
 addBtn.addEventListener('click', () =>{
     dialog.showModal();
@@ -38,8 +47,4 @@ readBtn.addEventListener('click', () =>{
         readBtn.textContent = "READ";
         readBtn.style.backgroundColor = "green";S
     }
-});
-
-removeBtn.addEventListener('click', () =>{
-    card.st
 });
