@@ -6,6 +6,7 @@ const removeBtn = document.querySelector('.removeBtn');
 const card = document.querySelector('.card');
 const cancelBtn = document.getElementById('cancelBtn');
 const submitBtn = document.getElementById('submitBtn');
+const form = document.getElementById('bookForm');
 
 const myLibrary = [];
 
@@ -38,6 +39,9 @@ function addBookToLibrary(){
         let book = new Book(title, author, pages, isRead);
         myLibrary.push(book);
         createCard(book);
+
+        dialog.close();
+        form.reset();
     }
 }
 
