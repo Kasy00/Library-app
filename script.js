@@ -1,4 +1,5 @@
 const dialog = document.querySelector('dialog');
+const cardsContainer = document.querySelector('.cards-container');
 const addBtn = document.getElementById('addBtn');
 const readBtn = document.querySelector('.readBtn');
 const removeBtn = document.querySelector('.removeBtn');
@@ -18,11 +19,38 @@ function addBookToLibrary(){
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
-    const isRead = document.getElementById('isRead').value;
+    const isRead = document.getElementById('isRead').checked;
 
     let book = new Book(title, author, pages, isRead);
     myLibrary.push(book);
-    console.log(myLibrary[0]);
+    createCard(title, author, pages, isRead);
+}
+
+function createCard(tit, auth, pg, rd){
+    const containerDiv = document.createElement('div');
+
+    const title = document.createElement('p');
+    title.textContent = tit;
+
+    const author = document.createElement('p');
+    author.textContent = auth;
+
+    const pages = document.createElement('p');
+    pages.textContent = pg;
+
+    const isRead = document.createElement('button');
+    rd === true ? isRead.textContent = "Read" : isRead.textContent = "Not read";
+
+    const removeButton = document.createElement('button');
+
+    containerDiv.classList.add('card');
+    cardsContainer.appendChild(containerDiv);
+    containerDiv.appendChild(title);
+    containerDiv.appendChild(author);
+    containerDiv.appendChild(pages);
+    containerDiv.appendChild(isRead);
+    containerDiv.appendChild(removeButton);
+    
 }
 
 submitBtn.addEventListener('click', addBookToLibrary);
@@ -45,6 +73,6 @@ readBtn.addEventListener('click', () =>{
     }
     else{
         readBtn.textContent = "READ";
-        readBtn.style.backgroundColor = "green";S
+        readBtn.style.backgroundColor = "green";
     }
 });
