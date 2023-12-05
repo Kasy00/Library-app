@@ -90,14 +90,3 @@ dialog.addEventListener('click', e =>{
         dialog.close();
     }
 });
-
-readBtn.addEventListener('click', () =>{
-    if(readBtn.textContent==="READ"){
-        readBtn.textContent = "NOT READ";
-        readBtn.style.backgroundColor = "red";
-    }
-    else{
-        readBtn.textContent = "READ";
-        readBtn.style.backgroundColor = "green";
-    }
-});
