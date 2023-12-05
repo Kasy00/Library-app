@@ -4,6 +4,7 @@ const addBtn = document.getElementById('addBtn');
 const readBtn = document.querySelector('.readBtn');
 const removeBtn = document.querySelector('.removeBtn');
 const card = document.querySelector('.card');
+const cancelBtn = document.getElementById('cancelBtn');
 const submitBtn = document.getElementById('submitBtn');
 
 const myLibrary = [];
@@ -15,15 +16,29 @@ function Book(title, author, pages, isRead=false){
     this.isRead = isRead;
 }
 
-function addBookToLibrary(){
+function validateForm() {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
-    const isRead = document.getElementById('isRead').checked;
 
-    let book = new Book(title, author, pages, isRead);
-    myLibrary.push(book);
-    createCard(title, author, pages, isRead);
+    if (title.trim() === '' || author.trim() === '' || pages.trim() === '') {
+        return false;
+    }
+
+    return true;
+}
+
+function addBookToLibrary(){
+    if(validateForm()){
+        const title = document.getElementById('title').value;
+        const author = document.getElementById('author').value;
+        const pages = document.getElementById('pages').value;
+        const isRead = document.getElementById('isRead').checked;
+    
+        let book = new Book(title, author, pages, isRead);
+        myLibrary.push(book);
+        createCard(title, author, pages, isRead);
+    }
 }
 
 function createCard(tit, auth, pg, rd){
@@ -59,6 +74,10 @@ submitBtn.addEventListener('click', addBookToLibrary);
 
 addBtn.addEventListener('click', () =>{
     dialog.showModal();
+});
+
+cancelBtn.addEventListener('click', () =>{
+    dialog.close();
 });
 
 dialog.addEventListener('click', e =>{
