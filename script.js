@@ -37,24 +37,24 @@ function addBookToLibrary(){
     
         let book = new Book(title, author, pages, isRead);
         myLibrary.push(book);
-        createCard(title, author, pages, isRead);
+        createCard(book);
     }
 }
 
-function createCard(tit, auth, pg, rd){
+function createCard(book){
     const containerDiv = document.createElement('div');
 
     const title = document.createElement('p');
-    title.textContent = tit;
+    title.textContent = book.title;
 
     const author = document.createElement('p');
-    author.textContent = auth;
+    author.textContent = book.author;
 
     const pages = document.createElement('p');
-    pages.textContent = pg;
+    pages.textContent = book.pages;
 
     const isRead = document.createElement('button');
-    rd === true ? isRead.textContent = "READ" : isRead.textContent = "NOT READ";
+    book.isRead === true ? isRead.textContent = "READ" : isRead.textContent = "NOT READ";
 
     const removeButton = document.createElement('button');
     removeButton.textContent = "REMOVE"
