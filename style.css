@@ -43,6 +43,12 @@ body{
     gap: 1.5rem;
 }
 
+.readBtn, .removeBtn{
+    padding: 2rem;
+    width: 50%;
+    border-radius: 1rem;
+}
+
 dialog{
     position: absolute;
     top: 50%;
