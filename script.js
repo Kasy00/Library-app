@@ -39,18 +39,20 @@ function createCard(tit, auth, pg, rd){
     pages.textContent = pg;
 
     const isRead = document.createElement('button');
-    rd === true ? isRead.textContent = "Read" : isRead.textContent = "Not read";
+    rd === true ? isRead.textContent = "READ" : isRead.textContent = "NOT READ";
 
     const removeButton = document.createElement('button');
+    removeButton.textContent = "REMOVE"
 
     containerDiv.classList.add('card');
+    isRead.classList.add('card-btns');
+    removeButton.classList.add('card-btns');
     cardsContainer.appendChild(containerDiv);
     containerDiv.appendChild(title);
     containerDiv.appendChild(author);
     containerDiv.appendChild(pages);
     containerDiv.appendChild(isRead);
-    containerDiv.appendChild(removeButton);
-    
+    containerDiv.appendChild(removeButton); 
 }
 
 submitBtn.addEventListener('click', addBookToLibrary);

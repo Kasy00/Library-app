@@ -43,7 +43,7 @@ body{
     gap: 1.5rem;
 }
 
-.readBtn, .removeBtn{
+.card-btns{
     padding: 2rem;
     width: 50%;
     border-radius: 1rem;
