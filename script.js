@@ -1,8 +1,22 @@
 const dialog = document.querySelector('dialog');
 const addBtn = document.getElementById('addBtn');
-const readBtn = document.querySelector(".readBtn");
-const removeBtn = document.querySelector(".removeBtn");
+const readBtn = document.querySelector('.readBtn');
+const removeBtn = document.querySelector('.removeBtn');
 const card = document.querySelector('.card');
+
+const myLibrary = [];
+
+function Book(title, author, pages, isRead=false){
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+}
+
+function addBookToLibrary(){
+    let book = new Book(title, author, pages, isRead);
+    myLibrary.push(book);
+}
 
 addBtn.addEventListener('click', () =>{
     dialog.showModal();
