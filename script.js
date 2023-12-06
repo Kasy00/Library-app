@@ -58,7 +58,13 @@ function createCard(book){
     pages.textContent = book.pages;
 
     const isRead = document.createElement('button');
-    book.isRead === true ? isRead.textContent = "READ" : isRead.textContent = "NOT READ";
+    if(book.isRead){
+        isRead.style.backgroundColor = '#03C988';
+        isRead.textContent = 'READ';
+    }else{
+        isRead.style.backgroundColor = '#E21A4B';
+        isRead.textContent = 'NOT READ';
+    }
 
     const removeButton = document.createElement('button');
     removeButton.textContent = "REMOVE"
@@ -72,10 +78,16 @@ function createCard(book){
     containerDiv.appendChild(author);
     containerDiv.appendChild(pages);
     containerDiv.appendChild(isRead);
+    
     containerDiv.appendChild(removeButton); 
 
     removeButton.addEventListener('click', () =>{
         removeBookFromLibrary(book);
+        updateDisplay();
+    });
+
+    isRead.addEventListener('click', () =>{
+        book.isRead = !book.isRead;
         updateDisplay();
     });
 }
@@ -93,6 +105,12 @@ function updateDisplay(){
     myLibrary.forEach(book =>{
         createCard(book);
     });
+}
+
+function handleIsRead(status){
+    if(status){
+
+    }
 }
 
 submitBtn.addEventListener('click', addBookToLibrary);
