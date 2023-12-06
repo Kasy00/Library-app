@@ -45,7 +45,7 @@ function addBookToLibrary(){
     }
 }
 
-function createCard(book, index){
+function createCard(book){
     const containerDiv = document.createElement('div');
 
     const title = document.createElement('p');
@@ -62,7 +62,7 @@ function createCard(book, index){
 
     const removeButton = document.createElement('button');
     removeButton.textContent = "REMOVE"
-    removeButton.dataset.index = index;
+    removeButton.dataset.index = myLibrary.indexOf(book);
 
     containerDiv.classList.add('card');
     isRead.classList.add('card-btns');
@@ -75,20 +75,23 @@ function createCard(book, index){
     containerDiv.appendChild(removeButton); 
 
     removeButton.addEventListener('click', () =>{
-        removeBookFromLibrary(index);
+        removeBookFromLibrary(book);
         updateDisplay();
     });
 }
 
-function removeBookFromLibrary(index){
-    myLibrary.splice(index, 1);
+function removeBookFromLibrary(book){
+    const index = myLibrary.indexOf(book);
+    if(index !== -1){
+        myLibrary.splice(index, 1);
+    }
 }
 
 function updateDisplay(){
     cardsContainer.innerHTML = '';
 
-    myLibrary.forEach((book, index) =>{
-        createCard(book, index);
+    myLibrary.forEach(book =>{
+        createCard(book);
     });
 }
 
