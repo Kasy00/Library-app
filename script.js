@@ -1,9 +1,7 @@
 const dialog = document.querySelector('dialog');
 const cardsContainer = document.querySelector('.cards-container');
 const addBtn = document.getElementById('addBtn');
-const readBtn = document.querySelector('.readBtn');
 const removeBtn = document.querySelector('.removeBtn');
-const card = document.querySelector('.card');
 const cancelBtn = document.getElementById('cancelBtn');
 const submitBtn = document.getElementById('submitBtn');
 const form = document.getElementById('bookForm');
@@ -105,12 +103,6 @@ function updateDisplay(){
     myLibrary.forEach(book =>{
         createCard(book);
     });
-}
-
-function handleIsRead(status){
-    if(status){
-
-    }
 }
 
 submitBtn.addEventListener('click', addBookToLibrary);
